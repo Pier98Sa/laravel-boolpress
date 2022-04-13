@@ -1,21 +1,23 @@
 <template>
-  <div>
-    <h1 class="text-uppercase text-center mt-3">Elenco dei post</h1>
-    <div class="container">
-        <div class="row">
-            <!--Stampo in delle card tutti i post con un ciclo V-for-->
-            <div class="col-4 py-2" v-for="post in posts" :key="post.id">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title text-uppercase">{{post.title}}</h5>
-                        <p class="card-text">{{post.content}}</p>
-                        <p> <strong>Autore: </strong>{{post.author}}</p>
-                        <a href="#" class="btn btn-primary">See more</a>
-                    </div>
+    <div>
+        <h1 class="text-uppercase text-center mt-3">Elenco dei post</h1>
+        <div class="container">
+            <div class="row">
+                <!--Stampo in delle card tutti i post con un ciclo V-for-->
+                <div class="col-4 py-2" v-for="post in posts" :key="post.id">
+                    <Post
+                    :title="post.title"
+                    :content="post.content"
+                    :slug="post.slug"
+                    :category="post.category"
+                    :tags="post.tags"
+                    :author="post.author"
+                    />
                 </div>
             </div> 
-            
+
         </div>
+
         <div class="row justify-content-center">
             <!--Creo i tasti per cambiare pagina-->
             <nav>
@@ -25,14 +27,16 @@
                 </ul>
             </nav>
         </div>
-        
-    </div>
-  </div>
+    </div>      
 </template>
 
 <script>
+import Post from '../components/partials/Post.vue'
 export default {
     name: 'Posts',
+    components: {
+        Post
+    },
 
     data() {
         return{

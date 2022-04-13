@@ -4,23 +4,10 @@
         <a class="navbar-brand" href="#">BoolPress</a>
 
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
+            <li class="nav-item" v-for="menuItem in menuItems" :key="menuItem.routeName" >
               <!--  <a class="nav-link" href="/">Home</a>  modo sbagliato  --> 
-              <router-link class="nav-link" :to="{name: 'home'}">Home </router-link>
+              <router-link class="nav-link" :to="{name: menuItem.routeName}">{{menuItem.label}} </router-link>
             </li>
-
-            <li class="nav-item">
-                <router-link class="nav-link" :to="{name: 'about'}">Chi Siamo </router-link>
-            </li>
-
-            <li class="nav-item">
-                <router-link class="nav-link" :to="{name: 'contact'}">Contatti </router-link>
-            </li>
-
-            <li class="nav-item">
-                <router-link class="nav-link" :to="{name: 'posts'}">Posts </router-link>
-            </li>
-
         </ul>
     </nav>
   </div>
@@ -28,7 +15,29 @@
 
 <script>
 export default {
-    name:'MyHeader'
+    name:'MyHeader',
+    data (){
+        return{
+            menuItems: [
+                {
+                    routeName: 'home',
+                    label: 'Home'
+                },
+                {
+                    routeName: 'about',
+                    label: 'Chi siamo'
+                },
+                {
+                    routeName: 'contact',
+                    label: 'Contatti'
+                },
+                {
+                    routeName: 'blog',
+                    label: 'Blog'
+                }
+            ]
+        }
+    }
 }
 </script>
 
