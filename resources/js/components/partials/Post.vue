@@ -2,6 +2,7 @@
     <div class="card">
         <div class="card-body">
             <h2 class="card-title text-uppercase">{{title}}</h2>
+            <img class="img-fluid" :src="img" alt='title'>
             <h3 class="card-text" >{{ category? category.name : '&nbsp;'}}</h3>
             <p class="card-text">{{getSummary(content)}}</p>
             <p> <strong>Autore: </strong>{{author}}</p>
@@ -13,7 +14,7 @@
 <script>
 export default {
     name: 'Post',
-    props: ['title','category','content','author','slug', 'tags'],
+    props: ['title','category','content','author','slug', 'tags','img'],
     data() {
         return{
             TextLength : 40,

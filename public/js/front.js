@@ -2009,9 +2009,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Post',
-  props: ['title', 'category', 'content', 'author', 'slug', 'tags'],
+  props: ['title', 'category', 'content', 'author', 'slug', 'tags', 'img'],
   data: function data() {
     return {
       TextLength: 40
@@ -2163,6 +2164,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Posts',
@@ -2210,6 +2212,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -3604,6 +3607,11 @@ var render = function () {
           _vm._v(_vm._s(_vm.title)),
         ]),
         _vm._v(" "),
+        _c("img", {
+          staticClass: "img-fluid",
+          attrs: { src: _vm.img, alt: "title" },
+        }),
+        _vm._v(" "),
         _c("h3", { staticClass: "card-text" }, [
           _vm._v(_vm._s(_vm.category ? _vm.category.name : " ")),
         ]),
@@ -3822,6 +3830,7 @@ var render = function () {
                   category: post.category,
                   tags: post.tags,
                   author: post.author,
+                  img: post.cover,
                 },
               }),
             ],
@@ -3911,6 +3920,11 @@ var render = function () {
         _vm.post
           ? _c("div", [
               _c("h1", [_vm._v(_vm._s(_vm.post.title))]),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "img-fluid",
+                attrs: { src: _vm.post.cover, alt: _vm.post.title },
+              }),
               _vm._v(" "),
               _vm.post.category
                 ? _c("h3", [

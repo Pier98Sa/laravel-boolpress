@@ -7,7 +7,11 @@
       <div class="row justify-content-center">
           <div class="col-md-12">
                 <h1 class="text-center">Visualizza Post</h1>
-
+                @if ($post->cover)
+                    <img class="img-fluid h-25 " src="{{asset('storage/'. $post->cover )}}" alt="{{$post->title}}">
+                @else
+                    <img class="img-fluid h-25" src="{{asset('img/fallback_img.jpg' )}}" alt="{{$post->title}}">
+                @endif
                 <div><strong>Titolo: </strong>{{$post->title}}</div>
                 <div><strong>Autore: </strong>{{$post->author}}</div>
                 <div><strong>Categoria: </strong>{{isset($post->category)? $post->category->name : '-'}}</div>

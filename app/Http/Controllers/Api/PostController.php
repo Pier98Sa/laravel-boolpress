@@ -18,6 +18,14 @@ class PostController extends Controller
         //richiamo tutti i post, gestendo anche le categorie e creando un impaginazione da 6
         $posts = Post::with(['category', 'tags'])->paginate(6);
 
+        //diamo una path assoluta alle immagini
+        foreach($posts as $post){
+            if ($post->cover) {
+                $post->cover = url('storage/'.$post->cover);
+            } else {
+                $post->cover = url('img/fallback_img.jpg');
+            }
+        }
         //ritorno un file Json che poi passerò al Front
         return response()->json(
             [
@@ -30,6 +38,13 @@ class PostController extends Controller
     public function show($slug){
 
         $post = Post::where('slug', '=', $slug)->with( ['category', 'tags'])->first();
+        
+        if ($post->cover) {
+            $post->cover = url('storage/'.$post->cover);
+        } else {
+            $post->cover = url('img/fallback_img.jpg');
+        }
+
         if ($post){
             return response()-> json(
                 [
